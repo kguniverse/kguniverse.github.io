@@ -2919,7 +2919,7 @@ mjx-container[display='true'] + br {
   }
 }
 body {
-  background: url("/images/background.png");
+  background: url("http://img.kger.io:1234/uploads/background.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 100% 100%;
