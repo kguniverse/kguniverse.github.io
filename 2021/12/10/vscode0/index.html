@@ -22,23 +22,33 @@
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.kger.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="Sutera blog">
-<meta property="og:url" content="http://blog.kger.io/archives/index.html">
+<meta name="description" content="折腾了一下午总算是配好了，虽然clion的配置更为无脑，但是可扩展性不高，但是vscode配置起来会有一些问题，我都折腾了整整一下午，总结下来以下流程，应该不会出现什么问题了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用vscode搭建openeuler开发环境">
+<meta property="og:url" content="http://blog.kger.io/2021/12/10/vscode0/index.html">
 <meta property="og:site_name" content="Sutera blog">
+<meta property="og:description" content="折腾了一下午总算是配好了，虽然clion的配置更为无脑，但是可扩展性不高，但是vscode配置起来会有一些问题，我都折腾了整整一下午，总结下来以下流程，应该不会出现什么问题了。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.kger.io/assets/images/vscodeSSH1.png">
+<meta property="og:image" content="http://blog.kger.io/assets/images/vscodeSSH2.png">
+<meta property="og:image" content="http://blog.kger.io/assets/images/vscodeSSH3.png">
+<meta property="og:image" content="http://blog.kger.io/assets/images/vscodeSSH4.png">
+<meta property="article:published_time" content="2021-12-10T02:43:36.000Z">
+<meta property="article:modified_time" content="2021-12-10T02:46:33.104Z">
 <meta property="article:author" content="kg">
+<meta property="article:tag" content="vscode">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.kger.io/assets/images/vscodeSSH1.png">
 
 
-<link rel="canonical" href="http://blog.kger.io/archives/">
+<link rel="canonical" href="http://blog.kger.io/2021/12/10/vscode0/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://blog.kger.io/2021/12/10/vscode0/","path":"2021/12/10/vscode0/","title":"使用vscode搭建openeuler开发环境"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | Sutera blog</title>
+<title>使用vscode搭建openeuler开发环境 | Sutera blog</title>
   
 
 
@@ -67,7 +77,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Sutera blog</h1>
+      <p class="site-title">Sutera blog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -130,7 +140,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -143,6 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85vscode%E5%8F%8A%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">安装vscode及插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">配置内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEserver%E7%AB%AF"><span class="nav-number">3.</span> <span class="nav-text">配置server端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEvscode"><span class="nav-number">4.</span> <span class="nav-text">配置vscode</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -196,69 +207,121 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 2 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://blog.kger.io/2021/12/10/vscode0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/kguniverse/blogImages/master//img/93942457_p0.png">
+      <meta itemprop="name" content="kg">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sutera blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用vscode搭建openeuler开发环境
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="创建时间：2021-12-10 10:43:36 / 修改时间：10:46:33" itemprop="dateCreated datePublished" datetime="2021-12-10T10:43:36+08:00">2021-12-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83/" itemprop="url" rel="index"><span itemprop="name">配置环境</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>折腾了一下午总算是配好了，虽然clion的配置更为无脑，但是可扩展性不高，但是vscode配置起来会有一些问题，我都折腾了整整一下午，总结下来以下流程，应该不会出现什么问题了。</p>
+<span id="more"></span>
+
+<h2 id="安装vscode及插件"><a href="#安装vscode及插件" class="headerlink" title="安装vscode及插件"></a>安装vscode及插件</h2><p>插件名称：remote-Development</p>
+<p><img src="/assets/images/vscodeSSH1.png" alt="1"></p>
+<h2 id="配置内容"><a href="#配置内容" class="headerlink" title="配置内容"></a>配置内容</h2><p><img src="/assets/images/vscodeSSH2.png" alt="2"></p>
+<p><img src="/assets/images/vscodeSSH3.png" alt="3"></p>
+<h2 id="配置server端"><a href="#配置server端" class="headerlink" title="配置server端"></a>配置server端</h2><ol>
+<li><p>配置ssh<br> 进入root</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+
+<p> 使用vim配置sshd_config</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+
+<p> 设置以下选项</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AllowTcpForwarding yes</span><br><span class="line">AllowAgentForwarding yes</span><br><span class="line">GatewayPorts yes</span><br></pre></td></tr></table></figure></li>
+<li><p>设置yum源<br>打开配置文件 <code>/etc/yum.repos.d/*.repo</code></p>
+<p>添加如下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[osrepo]</span><br><span class="line">name=osrepo</span><br><span class="line">baseurl=http://repo.openeuler.org/openEuler-20.03-LTS-SP1/OS/x86_64/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=http://repo.openeuler.org/openEuler-20.03-LTS-SP1/OS/x86_64/RPM-GPG-KEY-openEuler</span><br></pre></td></tr></table></figure>
+
+<p> 安装tar包</p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf install tar</span><br></pre></td></tr></table></figure>
+<h2 id="配置vscode"><a href="#配置vscode" class="headerlink" title="配置vscode"></a>配置vscode</h2><p>这个按自己需求配就好了<br>最终效果：</p>
+</li>
+</ol>
+<p><img src="/assets/images/vscodeSSH4.png" alt="4"></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-12-10T10:43:36+08:00"
-              content="2021-12-10">
-          12-10
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/12/10/vscode0/" itemprop="url">
-            <span itemprop="name">使用vscode搭建openeuler开发环境</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vscode/" rel="tag"># vscode</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/10/self-attention2/" rel="prev" title="self-attention2">
+                  <i class="fa fa-chevron-left"></i> self-attention2
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-12-10T09:02:32+08:00"
-              content="2021-12-10">
-          12-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/12/10/self-attention2/" itemprop="url">
-            <span itemprop="name">self-attention2</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 </div>
   </main>
