@@ -1371,6 +1371,7 @@ pre code {
   border: 1px solid #eee;
   max-width: 120px;
   padding: 2px;
+  border-radius: 50%;
 }
 .site-author-name {
   color: var(--text-color);
@@ -2937,7 +2938,7 @@ body {
   opacity: 0.8;
 }
 .post-block {
-  background: rgba(255,255,255,0.7) none repeat scroll !important;
+  background: rgba(255,255,255,0.9) none repeat scroll !important;
 }
 .post {
   margin-top: 60px;
