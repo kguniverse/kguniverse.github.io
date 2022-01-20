@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-mac-osx.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.kger.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="今天开坑ucore系列实验，开帖记录。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ucore lab0:准备">
+<meta property="og:url" content="https://blog.kger.io/2022/01/18/ucore0/index.html">
+<meta property="og:site_name" content="Sutera">
+<meta property="og:description" content="今天开坑ucore系列实验，开帖记录。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/kguniverse/blogImages/master/img/%E6%88%AA%E5%B1%8F2022-01-18%20%E4%B8%8B%E5%8D%884.32.35.png">
+<meta property="article:published_time" content="2022-01-18T07:58:08.000Z">
+<meta property="article:modified_time" content="2022-01-18T08:55:38.701Z">
+<meta property="article:author" content="kg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/kguniverse/blogImages/master/img/%E6%88%AA%E5%B1%8F2022-01-18%20%E4%B8%8B%E5%8D%884.32.35.png">
+
+
+<link rel="canonical" href="https://blog.kger.io/2022/01/18/ucore0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://blog.kger.io/2022/01/18/ucore0/","path":"2022/01/18/ucore0/","title":"ucore lab0:准备"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ucore lab0:准备 | Sutera</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Sutera</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">技术只是一项技能</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E5%AE%9E%E9%AA%8C%E6%8C%87%E5%AF%BC%E4%B9%A6"><span class="nav-number">1.</span> <span class="nav-text">阅读实验指导书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AT-amp-T%E6%B1%87%E7%BC%96%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">AT&amp;T汇编基本语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gcc%E5%9F%BA%E6%9C%AC%E5%86%85%E8%81%94%E6%B1%87%E7%BC%96"><span class="nav-number">1.2.</span> <span class="nav-text">gcc基本内联汇编</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GCC%E6%89%A9%E5%B1%95%E5%86%85%E8%81%94%E6%B1%87%E7%BC%96"><span class="nav-number">1.3.</span> <span class="nav-text">GCC扩展内联汇编</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="kg"
+      src="https://raw.githubusercontent.com/kguniverse/blogImages/master//img/93942457_p0.png">
+  <p class="site-author-name" itemprop="name">kg</p>
+  <div class="site-description" itemprop="description">当他回首往事的时候，不因虚度年华而悔恨，也不因碌碌无为而羞耻。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.kger.io/2022/01/18/ucore0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/kguniverse/blogImages/master//img/93942457_p0.png">
+      <meta itemprop="name" content="kg">
+      <meta itemprop="description" content="当他回首往事的时候，不因虚度年华而悔恨，也不因碌碌无为而羞耻。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sutera">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ucore lab0:准备
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-18 15:58:08 / 修改时间：16:55:38" itemprop="dateCreated datePublished" datetime="2022-01-18T15:58:08+08:00">2022-01-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>今天开坑ucore系列实验，开帖记录。</p>
+<span id="more"></span>
+
+<h2 id="阅读实验指导书"><a href="#阅读实验指导书" class="headerlink" title="阅读实验指导书"></a>阅读实验指导书</h2><p>针对于实验指导书中的内容，linux操作以及编译简单的c语言程序无问题，对于汇编的实验，对我所不知道的东西做一下下记录。</p>
+<h3 id="AT-amp-T汇编基本语法"><a href="#AT-amp-T汇编基本语法" class="headerlink" title="AT&amp;T汇编基本语法"></a>AT&amp;T汇编基本语法</h3><p>Ucore中用到的是AT&amp;T格式的汇编，与Intel格式的汇编有一些不同。二者语法上主要有以下几个不同：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">* 寄存器命名原则</span><br><span class="line">    AT&amp;T: %eax                      Intel: eax</span><br><span class="line">* 源/目的操作数顺序 </span><br><span class="line">    AT&amp;T: movl %eax, %ebx           Intel: mov ebx, eax</span><br><span class="line">* 常数/立即数的格式　</span><br><span class="line">    AT&amp;T: movl $_value, %ebx        Intel: mov eax, _value</span><br><span class="line">  把value的地址放入eax寄存器</span><br><span class="line">    AT&amp;T: movl $0xd00d, %ebx        Intel: mov ebx, 0xd00d</span><br><span class="line">* 操作数长度标识 </span><br><span class="line">    AT&amp;T: movw %ax, %bx             Intel: mov bx, ax</span><br><span class="line">* 寻址方式 </span><br><span class="line">    AT&amp;T:   immed32(basepointer, indexpointer, indexscale)</span><br><span class="line">    Intel:  [basepointer + indexpointer × indexscale + imm32)</span><br></pre></td></tr></table></figure>
+
+<p>如果操作系统工作于保护模式下，用的是32位线性地址，所以在计算地址时不用考虑segment:offset的问题。上式中的地址应为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imm32 + basepointer + indexpointer × indexscale</span><br></pre></td></tr></table></figure>
+
+<p>下面是一些例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">* 直接寻址 </span><br><span class="line">          AT&amp;T:  foo                         Intel: [foo]</span><br><span class="line">          boo是一个全局变量。注意加上$是表示地址引用，不加是表示值引用。对于局部变量，可以通过堆栈指针引用。</span><br><span class="line"></span><br><span class="line">  * 寄存器间接寻址 </span><br><span class="line">          AT&amp;T: (%eax)                        Intel: [eax]</span><br><span class="line"></span><br><span class="line">  * 变址寻址 </span><br><span class="line">          AT&amp;T: _variable(%eax)               Intel: [eax + _variable]</span><br><span class="line">          AT&amp;T: _array( ,%eax, 4)             Intel: [eax × 4 + _array]</span><br><span class="line">          AT&amp;T: _array(%ebx, %eax,8)          Intel: [ebx + eax × 8 + _array]</span><br></pre></td></tr></table></figure>
+
+<h3 id="gcc基本内联汇编"><a href="#gcc基本内联汇编" class="headerlink" title="gcc基本内联汇编"></a>gcc基本内联汇编</h3><p>基本内联汇编的格式非常简单：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">asm</span>(<span class="string">&quot;statements&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>“asm” 和 “_<em>asm</em>_” 的含义是完全一样的。如果有多行汇编，则每一行都要加上 “\n\t”。其中的 “\n” 是换行符，”\t” 是 tab 符，在每条命令的 结束加这两个符号，是为了让 gcc 把内联汇编代码翻译成一般的汇编代码时能够保证换行和留有一定的空格。对于基本asm语句，GCC编译出来的汇编代码就是双引号里的内容。例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">asm</span>( <span class="string">&quot;pushl %eax\n\t&quot;</span></span><br><span class="line">     <span class="string">&quot;movl $0,%eax\n\t&quot;</span></span><br><span class="line">     <span class="string">&quot;popl %eax&quot;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>实际上gcc在处理汇编时，是要把asm(…)的内容”打印”到汇编文件中，所以格式控制字符是必要的。再例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">asm</span>(<span class="string">&quot;movl %eax, %ebx&quot;</span>);</span><br><span class="line"><span class="keyword">asm</span>(<span class="string">&quot;xorl %ebx, %edx&quot;</span>);</span><br><span class="line"><span class="keyword">asm</span>(<span class="string">&quot;movl $0, _boo);</span></span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，由于我们在内联汇编中改变了 edx 和 ebx 的值，但是由于 gcc 的特殊的处理方法，即先形成汇编文件，再交给 GAS 去汇编，所以 GAS 并不知道我们已经改变了 edx和 ebx 的值，如果程序的上下文需要 edx 或 ebx 作其他内存单元或变量的暂存，就会产生没有预料的多次赋值，引起严重的后果。对于变量 _boo也存在一样的问题。为了解决这个问题，就要用到扩展 GCC 内联汇编语法。</p>
+<h3 id="GCC扩展内联汇编"><a href="#GCC扩展内联汇编" class="headerlink" title="GCC扩展内联汇编"></a>GCC扩展内联汇编</h3><p>使用GCC扩展内联汇编的例子如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> read_cr0() (&#123; \</span></span><br><span class="line"><span class="meta">unsigned int __dummy; \</span></span><br><span class="line"><span class="meta">__asm__( \</span></span><br><span class="line"><span class="meta">    <span class="meta-string">&quot;movl %%cr0,%0\n\t&quot;</span> \</span></span><br><span class="line"><span class="meta">    :<span class="meta-string">&quot;=r&quot;</span> (__dummy)); \</span></span><br><span class="line"><span class="meta">__dummy; \</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<p>它代表什么含义呢？这需要从其基本格式讲起。GCC扩展内联汇编的基本格式是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">asm [volatile] ( Assembler Template</span><br><span class="line">   : Output Operands</span><br><span class="line">   [ : Input Operands</span><br><span class="line">   [ : Clobbers ] ])</span><br></pre></td></tr></table></figure>
+
+<p>其中，__asm__ 表示汇编代码的开始，其后可以跟 __volatile__（这是可选项），其含义是避免 “asm” 指令被删除、移动或组合，在执行代码时，如果不希望汇编语句被 gcc 优化而改变位置，就需要在 asm 符号后添加 volatile 关键词：asm volatile(…)；或者更详细地说明为：__asm__ _<em>volatile</em>_(…)；然后就是小括弧，括弧中的内容是具体的内联汇编指令代码。 “” 为汇编指令部分，例如，”movl %%cr0,%0\n\t”。数字前加前缀 “％“，如％1，％2等表示使用寄存器的样板操作数。可以使用的操作数总数取决于具体CPU中通用寄存器的数 量，如Intel可以有8个。指令中有几个操作数，就说明有几个变量需要与寄存器结合，由gcc在编译时根据后面输出部分和输入部分的约束条件进行相应的处理。由于这些样板操作数的前缀使用了”％”，因此，在用到具体的寄存器时就在前面加<strong>两个“％”</strong>，如**%%cr0**。输出部分（output operand list），用以规定对输出变量（目标操作数）如何与寄存器结合的约束（constraint）,输出部分可以有多个约束，互相以逗号分开。每个约束以“＝”开头，接着用一个字母来表示操作数的类型，然后是关于变量结合的约束。例如，上例中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:&quot;=r&quot; (__dummy)</span><br></pre></td></tr></table></figure>
+
+<p>“＝r”表示相应的目标操作数（指令部分的%0）可以使用任何一个通用寄存器，并且变量__dummy 存放在这个寄存器中，但如果是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:“＝m”(__dummy)</span><br></pre></td></tr></table></figure>
+
+<p>“＝m”就表示相应的目标操作数是存放在内存单元__dummy中。表示约束条件的字母很多，下表给出几个主要的约束字母及其含义：</p>
+<p><img src="https://raw.githubusercontent.com/kguniverse/blogImages/master/img/%E6%88%AA%E5%B1%8F2022-01-18%20%E4%B8%8B%E5%8D%884.32.35.png"></p>
+<p>输入部分（input operand list）：输入部分与输出部分相似，但没有“＝”。如果输入部分一个操作数所要求使用的寄存器，与前面输出部分某个约束所要求的是同一个寄存器，那就把对应操作数的编号（如“1”，“2”等）放在约束条件中。在后面的例子中，可看到这种情况。修改部分（clobber list,也称 乱码列表）:这部分常常以“memory”为约束条件，以表示操作完成后内存中的内容已有改变，如果原来某个寄存器的内容来自内存，那么现在内存中这个单元的内容已经改变。乱码列表通知编译器，有些寄存器或内存因内联汇编块造成乱码，可隐式地破坏了条件寄存器的某些位（字段）。 注意，指令部分为必选项，而输入部分、输出部分及修改部分为可选项，当输入部分存在，而输出部分不存在时，冒号“：”要保留，当“memory”存在时，三个冒号都要保留，例如</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __cli() __asm__ __volatile__(<span class="meta-string">&quot;cli&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>下面是一个例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> value=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> buf[<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">asm</span>(</span><br><span class="line">        <span class="string">&quot;cld \n\t&quot;</span></span><br><span class="line">        <span class="string">&quot;rep \n\t&quot;</span></span><br><span class="line">        <span class="string">&quot;stosl&quot;</span></span><br><span class="line">    :</span><br><span class="line">    : <span class="string">&quot;c&quot;</span> (count), <span class="string">&quot;a&quot;</span> (value) , <span class="string">&quot;D&quot;</span> (buf)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得到的主要汇编代码为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">movl count,%ecx</span><br><span class="line">movl value,%eax</span><br><span class="line">movl buf,%edi</span><br><span class="line">#APP</span><br><span class="line">cld</span><br><span class="line">rep</span><br><span class="line">stosl</span><br><span class="line">#NO_APP</span><br></pre></td></tr></table></figure>
+
+<p>cld,rep,stos这几条语句的功能是向buf中写上count个value值。冒号后的语句指明输入，输出和被改变的寄存器。通过冒号以后的语句，编译器就知道你的指令需要和改变哪些寄存器，从而可以优化寄存器的分配。其中符号”c”(count)指示要把count的值放入ecx寄存器。类似的还有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a eax</span><br><span class="line">b ebx</span><br><span class="line">c ecx</span><br><span class="line">d edx</span><br><span class="line">S esi</span><br><span class="line">D edi</span><br><span class="line">I 常数值，(0 - 31)</span><br><span class="line">q,r 动态分配的寄存器</span><br><span class="line">g eax,ebx,ecx,edx或内存变量</span><br><span class="line">A 把eax和edx合成一个64位的寄存器(use long longs)</span><br></pre></td></tr></table></figure>
+
+<p>也可以让gcc自己选择合适的寄存器。如下面的例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">asm</span>(<span class="string">&quot;leal (%1,%1,4),%0&quot;</span></span><br><span class="line">    : <span class="string">&quot;=r&quot;</span> (x)</span><br><span class="line">    : <span class="string">&quot;0&quot;</span> (x)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>这段代码到的主要汇编代码为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">movl x,%eax</span><br><span class="line">#APP</span><br><span class="line">leal (%eax,%eax,4),%eax</span><br><span class="line">#NO_APP</span><br><span class="line">movl %eax,x</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/25/greedy-algorithm-prof/" rel="prev" title="贪心算法证明">
+                  <i class="fa fa-chevron-left"></i> 贪心算法证明
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/01/18/ucore-note1/" rel="next" title="ucore lab1网课笔记">
+                  ucore lab1网课笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kg</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div> -->
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
