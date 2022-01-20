@@ -22,20 +22,22 @@
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"blog.kger.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="启动顺序x86启动顺序，第一条指令Base+EIP&#x3D;FFFF0000H + 0000FFF0H &#x3D; FFFFFFF0H当CS被新值加载，则地址转换规则开始起作用（实模式启动，找到BIOS）Base左移4位 从BIOS到Bootloader把第一个扇区（主引导扇区 512MB）读到内存中，跳转到0x7c00指令。但是操作系统过大，512字节中存储的Bootloader将进行后续操作 从bootloa">
+<meta name="description" content="ucore lab1网课笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ucore lab1网课笔记">
 <meta property="og:url" content="https://blog.kger.io/2022/01/18/ucore-note1/index.html">
 <meta property="og:site_name" content="Sutera">
-<meta property="og:description" content="启动顺序x86启动顺序，第一条指令Base+EIP&#x3D;FFFF0000H + 0000FFF0H &#x3D; FFFFFFF0H当CS被新值加载，则地址转换规则开始起作用（实模式启动，找到BIOS）Base左移4位 从BIOS到Bootloader把第一个扇区（主引导扇区 512MB）读到内存中，跳转到0x7c00指令。但是操作系统过大，512字节中存储的Bootloader将进行后续操作 从bootloa">
+<meta property="og:description" content="ucore lab1网课笔记">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/kguniverse/blogImages/master/img/%E6%88%AA%E5%B1%8F2022-01-18%20%E4%B8%8B%E5%8D%884.32.35.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kguniverse/blogImages/master/img/%E6%88%AA%E5%B1%8F2022-01-19%20%E4%B8%8B%E5%8D%883.26.08.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kguniverse/blogImages/master/img/%E6%88%AA%E5%B1%8F2022-01-19%20%E4%B8%8B%E5%8D%883.29.38.png">
 <meta property="article:published_time" content="2022-01-18T09:04:00.000Z">
-<meta property="article:modified_time" content="2022-01-20T06:43:03.433Z">
+<meta property="article:modified_time" content="2022-01-20T12:37:43.139Z">
 <meta property="article:author" content="kg">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/kguniverse/blogImages/master/img/%E6%88%AA%E5%B1%8F2022-01-19%20%E4%B8%8B%E5%8D%883.26.08.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/kguniverse/blogImages/master/img/%E6%88%AA%E5%B1%8F2022-01-18%20%E4%B8%8B%E5%8D%884.32.35.png">
 
 
 <link rel="canonical" href="https://blog.kger.io/2022/01/18/ucore-note1/">
@@ -151,7 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">启动顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#x86%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%9D%A1%E6%8C%87%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">x86启动顺序，第一条指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8EBIOS%E5%88%B0Bootloader"><span class="nav-number">1.2.</span> <span class="nav-text">从BIOS到Bootloader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8Ebootloader%E5%88%B0OS"><span class="nav-number">1.3.</span> <span class="nav-text">从bootloader到OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AE%B5%E6%9C%BA%E5%88%B6"><span class="nav-number">1.4.</span> <span class="nav-text">段机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E8%83%BD%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.5.</span> <span class="nav-text">使能保护模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BDelf%E6%A0%BC%E5%BC%8F%E7%9A%84ucore-OS-kernel"><span class="nav-number">1.6.</span> <span class="nav-text">加载elf格式的ucore OS kernel</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c%E8%AF%AD%E8%A8%80%E8%B0%83%E7%94%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">c语言调用的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCC%E5%86%85%E8%81%94%E6%B1%87%E7%BC%96"><span class="nav-number">3.</span> <span class="nav-text">GCC内联汇编</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E4%B8%AD%E7%9A%84%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">x86中的中断处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E4%BE%8B%E7%A8%8B%EF%BC%88ISR%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">确定中断服务例程（ISR）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E5%88%B0%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E4%BE%8B%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">切换到中断服务例程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E4%BE%8B%E7%A8%8B%E8%BF%94%E5%9B%9E"><span class="nav-number">4.3.</span> <span class="nav-text">从中断服务例程返回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">4.4.</span> <span class="nav-text">系统调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">实验过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A11"><span class="nav-number">6.1.</span> <span class="nav-text">任务1</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text">启动顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#x86%E5%90%AF%E5%8A%A8%E9%A1%BA%E5%BA%8F%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%9D%A1%E6%8C%87%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">x86启动顺序，第一条指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8EBIOS%E5%88%B0Bootloader"><span class="nav-number">1.2.</span> <span class="nav-text">从BIOS到Bootloader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8Ebootloader%E5%88%B0OS"><span class="nav-number">1.3.</span> <span class="nav-text">从bootloader到OS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AE%B5%E6%9C%BA%E5%88%B6"><span class="nav-number">1.4.</span> <span class="nav-text">段机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E8%83%BD%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.5.</span> <span class="nav-text">使能保护模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BDelf%E6%A0%BC%E5%BC%8F%E7%9A%84ucore-OS-kernel"><span class="nav-number">1.6.</span> <span class="nav-text">加载elf格式的ucore OS kernel</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c%E8%AF%AD%E8%A8%80%E8%B0%83%E7%94%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">c语言调用的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCC%E5%86%85%E8%81%94%E6%B1%87%E7%BC%96"><span class="nav-number">3.</span> <span class="nav-text">GCC内联汇编</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GCC%E6%89%A9%E5%B1%95%E5%86%85%E8%81%94%E6%B1%87%E7%BC%96"><span class="nav-number">3.1.</span> <span class="nav-text">GCC扩展内联汇编</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E4%B8%AD%E7%9A%84%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">x86中的中断处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E4%BE%8B%E7%A8%8B%EF%BC%88ISR%EF%BC%89"><span class="nav-number">4.1.</span> <span class="nav-text">确定中断服务例程（ISR）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E5%88%B0%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E4%BE%8B%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">切换到中断服务例程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E4%BE%8B%E7%A8%8B%E8%BF%94%E5%9B%9E"><span class="nav-number">4.3.</span> <span class="nav-text">从中断服务例程返回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-number">4.4.</span> <span class="nav-text">系统调用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">实验过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A11"><span class="nav-number">6.1.</span> <span class="nav-text">任务1</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -177,7 +179,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -247,7 +249,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-20 14:43:03" itemprop="dateModified" datetime="2022-01-20T14:43:03+08:00">2022-01-20</time>
+      <time title="修改时间：2022-01-20 20:37:43" itemprop="dateModified" datetime="2022-01-20T20:37:43+08:00">2022-01-20</time>
     </span>
 
   
@@ -260,7 +262,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="启动顺序"><a href="#启动顺序" class="headerlink" title="启动顺序"></a>启动顺序</h2><h3 id="x86启动顺序，第一条指令"><a href="#x86启动顺序，第一条指令" class="headerlink" title="x86启动顺序，第一条指令"></a>x86启动顺序，第一条指令</h3><p>Base+EIP=FFFF0000H + 0000FFF0H = FFFFFFF0H<br>当CS被新值加载，则地址转换规则开始起作用<br>（实模式启动，找到BIOS）<br>Base左移4位</p>
+        <p>ucore lab1网课笔记</p>
+<span id="more"></span> 
+
+
+
+<h2 id="启动顺序"><a href="#启动顺序" class="headerlink" title="启动顺序"></a>启动顺序</h2><h3 id="x86启动顺序，第一条指令"><a href="#x86启动顺序，第一条指令" class="headerlink" title="x86启动顺序，第一条指令"></a>x86启动顺序，第一条指令</h3><p>Base+EIP=FFFF0000H + 0000FFF0H = FFFFFFF0H<br>当CS被新值加载，则地址转换规则开始起作用<br>（实模式启动，找到BIOS）<br>Base左移4位</p>
 <h3 id="从BIOS到Bootloader"><a href="#从BIOS到Bootloader" class="headerlink" title="从BIOS到Bootloader"></a>从BIOS到Bootloader</h3><p>把第一个扇区（主引导扇区 512MB）读到内存中，跳转到0x7c00指令。<br>但是操作系统过大，512字节中存储的Bootloader将进行后续操作</p>
 <h3 id="从bootloader到OS"><a href="#从bootloader到OS" class="headerlink" title="从bootloader到OS"></a>从bootloader到OS</h3><p>驱使 保护模式，断机制<br>读取kernel代码，放到内存固定位置<br>跳转到ucore OS的入口点（entry point）</p>
 <h3 id="段机制"><a href="#段机制" class="headerlink" title="段机制"></a>段机制</h3><p>GDT 全局描述表</p>
@@ -270,6 +277,48 @@
 <p>不需要保存/恢复所有寄存器。</p>
 <p>课内csapp中学过，需要注意的是，压栈操作是向低地址压栈。</p>
 <h2 id="GCC内联汇编"><a href="#GCC内联汇编" class="headerlink" title="GCC内联汇编"></a>GCC内联汇编</h2><p>c语言不足以完成所有cpu的高权限指令。</p>
+<p>基本内联汇编的格式非常简单：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">asm</span>(<span class="string">&quot;statements&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>“asm” 和 “_<em>asm</em>_” 的含义是完全一样的。如果有多行汇编，则每一行都要加上 “\n\t”。其中的 “\n” 是换行符，”\t” 是 tab 符，在每条命令的 结束加这两个符号，是为了让 gcc 把内联汇编代码翻译成一般的汇编代码时能够保证换行和留有一定的空格。对于基本asm语句，GCC编译出来的汇编代码就是双引号里的内容。例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">asm</span>( <span class="string">&quot;pushl %eax\n\t&quot;</span></span><br><span class="line">     <span class="string">&quot;movl $0,%eax\n\t&quot;</span></span><br><span class="line">     <span class="string">&quot;popl %eax&quot;</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>实际上gcc在处理汇编时，是要把asm(…)的内容”打印”到汇编文件中，所以格式控制字符是必要的。再例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">asm</span>(<span class="string">&quot;movl %eax, %ebx&quot;</span>);</span><br><span class="line"><span class="keyword">asm</span>(<span class="string">&quot;xorl %ebx, %edx&quot;</span>);</span><br><span class="line"><span class="keyword">asm</span>(<span class="string">&quot;movl $0, _boo);</span></span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，由于我们在内联汇编中改变了 edx 和 ebx 的值，但是由于 gcc 的特殊的处理方法，即先形成汇编文件，再交给 GAS 去汇编，所以 GAS 并不知道我们已经改变了 edx和 ebx 的值，如果程序的上下文需要 edx 或 ebx 作其他内存单元或变量的暂存，就会产生没有预料的多次赋值，引起严重的后果。对于变量 _boo也存在一样的问题。为了解决这个问题，就要用到扩展 GCC 内联汇编语法。</p>
+<h3 id="GCC扩展内联汇编"><a href="#GCC扩展内联汇编" class="headerlink" title="GCC扩展内联汇编"></a>GCC扩展内联汇编</h3><p>使用GCC扩展内联汇编的例子如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> read_cr0() (&#123; \</span></span><br><span class="line"><span class="meta">unsigned int __dummy; \</span></span><br><span class="line"><span class="meta">__asm__( \</span></span><br><span class="line"><span class="meta">    <span class="meta-string">&quot;movl %%cr0,%0\n\t&quot;</span> \</span></span><br><span class="line"><span class="meta">    :<span class="meta-string">&quot;=r&quot;</span> (__dummy)); \</span></span><br><span class="line"><span class="meta">__dummy; \</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<p>它代表什么含义呢？这需要从其基本格式讲起。GCC扩展内联汇编的基本格式是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">asm [volatile] ( Assembler Template</span><br><span class="line">   : Output Operands</span><br><span class="line">   [ : Input Operands</span><br><span class="line">   [ : Clobbers ] ])</span><br></pre></td></tr></table></figure>
+
+<p>其中，__asm__ 表示汇编代码的开始，其后可以跟 __volatile__（这是可选项），其含义是避免 “asm” 指令被删除、移动或组合，在执行代码时，如果不希望汇编语句被 gcc 优化而改变位置，就需要在 asm 符号后添加 volatile 关键词：asm volatile(…)；或者更详细地说明为：__asm__ _<em>volatile</em>_(…)；然后就是小括弧，括弧中的内容是具体的内联汇编指令代码。 “” 为汇编指令部分，例如，”movl %%cr0,%0\n\t”。数字前加前缀 “％“，如％1，％2等表示使用寄存器的样板操作数。可以使用的操作数总数取决于具体CPU中通用寄存器的数 量，如Intel可以有8个。指令中有几个操作数，就说明有几个变量需要与寄存器结合，由gcc在编译时根据后面输出部分和输入部分的约束条件进行相应的处理。由于这些样板操作数的前缀使用了”％”，因此，在用到具体的寄存器时就在前面加<strong>两个“％”</strong>，如**%%cr0**。输出部分（output operand list），用以规定对输出变量（目标操作数）如何与寄存器结合的约束（constraint）,输出部分可以有多个约束，互相以逗号分开。每个约束以“＝”开头，接着用一个字母来表示操作数的类型，然后是关于变量结合的约束。例如，上例中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:&quot;=r&quot; (__dummy)</span><br></pre></td></tr></table></figure>
+
+<p>“＝r”表示相应的目标操作数（指令部分的%0）可以使用任何一个通用寄存器，并且变量__dummy 存放在这个寄存器中，但如果是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:“＝m”(__dummy)</span><br></pre></td></tr></table></figure>
+
+<p>“＝m”就表示相应的目标操作数是存放在内存单元__dummy中。表示约束条件的字母很多，下表给出几个主要的约束字母及其含义：</p>
+<p><img src="https://raw.githubusercontent.com/kguniverse/blogImages/master/img/%E6%88%AA%E5%B1%8F2022-01-18%20%E4%B8%8B%E5%8D%884.32.35.png"></p>
+<p>输入部分（input operand list）：输入部分与输出部分相似，但没有“＝”。如果输入部分一个操作数所要求使用的寄存器，与前面输出部分某个约束所要求的是同一个寄存器，那就把对应操作数的编号（如“1”，“2”等）放在约束条件中。在后面的例子中，可看到这种情况。修改部分（clobber list,也称 乱码列表）:这部分常常以“memory”为约束条件，以表示操作完成后内存中的内容已有改变，如果原来某个寄存器的内容来自内存，那么现在内存中这个单元的内容已经改变。乱码列表通知编译器，有些寄存器或内存因内联汇编块造成乱码，可隐式地破坏了条件寄存器的某些位（字段）。 注意，指令部分为必选项，而输入部分、输出部分及修改部分为可选项，当输入部分存在，而输出部分不存在时，冒号“：”要保留，当“memory”存在时，三个冒号都要保留，例如</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __cli() __asm__ __volatile__(<span class="meta-string">&quot;cli&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>下面是一个例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> count=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> value=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> buf[<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">asm</span>(</span><br><span class="line">        <span class="string">&quot;cld \n\t&quot;</span></span><br><span class="line">        <span class="string">&quot;rep \n\t&quot;</span></span><br><span class="line">        <span class="string">&quot;stosl&quot;</span></span><br><span class="line">    :</span><br><span class="line">    : <span class="string">&quot;c&quot;</span> (count), <span class="string">&quot;a&quot;</span> (value) , <span class="string">&quot;D&quot;</span> (buf)</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>得到的主要汇编代码为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">movl count,%ecx</span><br><span class="line">movl value,%eax</span><br><span class="line">movl buf,%edi</span><br><span class="line">#APP</span><br><span class="line">cld</span><br><span class="line">rep</span><br><span class="line">stosl</span><br><span class="line">#NO_APP</span><br></pre></td></tr></table></figure>
+
+<p>cld,rep,stos这几条语句的功能是向buf中写上count个value值。冒号后的语句指明输入，输出和被改变的寄存器。通过冒号以后的语句，编译器就知道你的指令需要和改变哪些寄存器，从而可以优化寄存器的分配。其中符号”c”(count)指示要把count的值放入ecx寄存器。类似的还有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a eax</span><br><span class="line">b ebx</span><br><span class="line">c ecx</span><br><span class="line">d edx</span><br><span class="line">S esi</span><br><span class="line">D edi</span><br><span class="line">I 常数值，(0 - 31)</span><br><span class="line">q,r 动态分配的寄存器</span><br><span class="line">g eax,ebx,ecx,edx或内存变量</span><br><span class="line">A 把eax和edx合成一个64位的寄存器(use long longs)</span><br></pre></td></tr></table></figure>
+
+<p>也可以让gcc自己选择合适的寄存器。如下面的例子：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">asm</span>(<span class="string">&quot;leal (%1,%1,4),%0&quot;</span></span><br><span class="line">    : <span class="string">&quot;=r&quot;</span> (x)</span><br><span class="line">    : <span class="string">&quot;0&quot;</span> (x)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>这段代码到的主要汇编代码为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">movl x,%eax</span><br><span class="line">#APP</span><br><span class="line">leal (%eax,%eax,4),%eax</span><br><span class="line">#NO_APP</span><br><span class="line">movl %eax,x</span><br></pre></td></tr></table></figure>
+
 <h2 id="x86中的中断处理"><a href="#x86中的中断处理" class="headerlink" title="x86中的中断处理"></a>x86中的中断处理</h2><ul>
 <li>中断</li>
 <li>异常</li>
@@ -338,6 +387,9 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+          </div>
 
         
 
