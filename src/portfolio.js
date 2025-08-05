@@ -50,7 +50,8 @@ const socialMediaLinks = {
 
 const skillsSection = {
   title: "What I do",
-  subTitle: "Full-stack \
+  subTitle:
+    "Full-stack \
     engineer with expertise in AI model optimization, medical imaging pipelines, \
     and cloud-integrated solutions for healthcare and scientific applications",
   skills: [
@@ -59,15 +60,17 @@ const skillsSection = {
       full-stack applications with cloud-native tools (e.g., AWS, Kubernetes, MLFlows), \
       and integrating AI models into scalable production pipelines."
     ),
-    emoji("AI Model Training & Optimization: Skilled in training deep learning models \
+    emoji(
+      "AI Model Training & Optimization: Skilled in training deep learning models \
        with PyTorch and TensorFlow, optimizing inference with ONNX Runtime and TensorRT for low-latency,\
-        high-throughput applications."),
+        high-throughput applications."
+    ),
     emoji(
       "Medical Imaging & Device Workflow: Capable of processing multi-format medical images (DICOM, OME-TIFF, WSI), developing AI models for histological and radiological tasks, and integrating data from MRI and remote sensing devices."
     ),
     emoji(
       "Low-Level Systems & Embedded Development: Experienced in systems programming with C++, Rust, and x86 assembly; familiar with compiler principles, embedded development, and implementing communication protocols for performance-critical applications."
-    ),
+    )
   ],
 
   /* Make Sure to include correct Font Awesome Classname to view your icon
@@ -126,7 +129,7 @@ const educationInfo = {
       duration: "September 2023 - August 2025",
       desc: "Participated in the research of Medical Image Processing and published 1 journal paper.",
       descBullets: [
-        "paper published: Wang Q, Tweel J E D, Reza P H, et al. Pathology-Guided Virtual Staining Metric for Evaluation and Training[J]. arXiv preprint arXiv:2507.12624, 2025.",
+        "paper published: Wang Q, Tweel J E D, Reza P H, et al. Pathology-Guided Virtual Staining Metric for Evaluation and Training[J]. arXiv preprint arXiv:2507.12624, 2025."
       ]
     },
     {
@@ -240,8 +243,7 @@ const achievementSection = {
   achievementsCards: [
     {
       title: "ACM ICPC",
-      subtitle:
-        "Bronze Medalist in ACM ICPC 2020, Asia Regional Contest",
+      subtitle: "Bronze Medalist in ACM ICPC 2020, Asia Regional Contest",
       image: require("./assets/images/icpcLogo.png"),
       imageAlt: "ICPC Logo",
       footerLink: [
@@ -261,8 +263,7 @@ const achievementSection = {
     },
     {
       title: "CPR and First Aid",
-      subtitle:
-        "Certified in CPR and First Aid by Red Cross",
+      subtitle: "Certified in CPR and First Aid by Red Cross",
       image: require("./assets/images/cprLogo.png"),
       imageAlt: "ICPC Logo",
       footerLink: [
@@ -279,7 +280,7 @@ const achievementSection = {
           url: "https://opensource.googleblog.com/2019/01/google-code-in-2018-winners.html"
         }
       ]
-    },
+    }
   ],
   display: true // Set false to hide this section, defaults to true
 };
