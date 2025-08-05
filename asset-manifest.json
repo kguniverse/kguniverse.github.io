@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.9c9afc7d.css",
-    "main.js": "/static/js/main.182185a0.js",
+    "main.js": "/static/js/main.a40cb2ba.js",
     "static/css/64.bba8fa55.chunk.css": "/static/css/64.bba8fa55.chunk.css",
     "static/js/64.56dc6704.chunk.js": "/static/js/64.56dc6704.chunk.js",
     "static/css/769.b3cbb36b.chunk.css": "/static/css/769.b3cbb36b.chunk.css",
@@ -14,6 +14,7 @@
     "static/media/waterlooLogo.png": "/static/media/waterlooLogo.fb2214d54ea3b4ae8fde.png",
     "static/media/manOnTable.svg": "/static/media/manOnTable.8f117eb207e57ed8f89d67d595aceb45.svg",
     "static/media/contactMailDark.svg": "/static/media/contactMailDark.1db650d351729a0f17b4e3104e6a7b7a.svg",
+    "static/media/bytedanceLogo.png": "/static/media/bytedanceLogo.cb471d69dd132b34041a.png",
     "static/media/developerActivity.svg": "/static/media/developerActivity.2c0445cae86f4243433a2f5a22b2c031.svg",
     "static/media/cambriconLogo.png": "/static/media/cambriconLogo.6c5c625ec2b1597513b8.png",
     "static/media/icpcLogo.png": "/static/media/icpcLogo.d0649cb3a8ae555747f8.png",
@@ -24,7 +25,7 @@
     "index.html": "/index.html",
     "static/media/talksCardBack.svg": "/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
     "main.9c9afc7d.css.map": "/static/css/main.9c9afc7d.css.map",
-    "main.182185a0.js.map": "/static/js/main.182185a0.js.map",
+    "main.a40cb2ba.js.map": "/static/js/main.a40cb2ba.js.map",
     "64.bba8fa55.chunk.css.map": "/static/css/64.bba8fa55.chunk.css.map",
     "64.56dc6704.chunk.js.map": "/static/js/64.56dc6704.chunk.js.map",
     "769.b3cbb36b.chunk.css.map": "/static/css/769.b3cbb36b.chunk.css.map",
@@ -32,6 +33,6 @@
   },
   "entrypoints": [
     "static/css/main.9c9afc7d.css",
-    "static/js/main.182185a0.js"
+    "static/js/main.a40cb2ba.js"
   ]
 }
