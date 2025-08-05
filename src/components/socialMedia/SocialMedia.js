@@ -1,6 +1,6 @@
 import React from "react";
 import "./SocialMedia.scss";
-import {socialMediaLinks} from "../../portfolio";
+import { socialMediaLinks } from "../../portfolio";
 
 export default function socialMedia() {
   if (!socialMediaLinks.display) {
@@ -124,6 +124,18 @@ export default function socialMedia() {
           rel="noopener noreferrer"
         >
           <i className="fab fa-kaggle"></i>
+          <span></span>
+        </a>
+      ) : null}
+
+      {socialMediaLinks.googleScholar ? (
+        <a
+          href={socialMediaLinks.googleScholar}
+          className="icon-button google-scholar"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fa-brands fa-google-scholar"></i>
           <span></span>
         </a>
       ) : null}

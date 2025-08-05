@@ -37,6 +37,7 @@ const socialMediaLinks = {
   github: "https://github.com/kguniverse",
   linkedin: "https://www.linkedin.com/in/qiankai-wang/",
   gmail: "mailto://kkwang0805@gmail.com",
+  googleScholar: "https://scholar.google.com/citations?user=nqoovSEAAAAJ&hl=en",
   // gitlab: "https://gitlab.com/saadpasta",
   // facebook: "https://www.facebook.com/saad.pasta7",
   // medium: "https://medium.com/@saadpasta",
@@ -92,6 +93,10 @@ https://fontawesome.com/icons?d=gallery */
     {
       skillName: "react",
       fontAwesomeClassname: "fab fa-react"
+    },
+    {
+      skillName: "golang",
+      fontAwesomeClassname: "fab fa-golang"
     },
     {
       skillName: "rust",
