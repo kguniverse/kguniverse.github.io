@@ -174,7 +174,7 @@ const workExperiences = {
       company: "Photomedicines Lab",
       companylogo: require("./assets/images/pmlLogo.png"),
       date: "Oct 2023 - Aug 2025",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      desc: "Led the development of AI-driven medical imaging solutions, focusing on histopathology and radiology.",
       descBullets: [
         "Developed workflows and models for H&E virtual staining and quality control systems, introducing pathology-aware image similarity methods.",
         "paper published: Wang Q, Tweel J E D, Reza P H, et al. Pathology-Guided Virtual Staining Metric for Evaluation and Training[J]. arXiv preprint arXiv:2507.12624, 2025.",
@@ -186,7 +186,22 @@ const workExperiences = {
       company: "Cambricon Technologies",
       companylogo: require("./assets/images/cambriconLogo.png"),
       date: "Aug 2022 - Oct 2023",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      desc: "Developed and optimized AI models for autonomous driving perception systems, focusing on 3D object detection and segmentation.",
+      descBullets: [
+        "Accelerated BEV-based 3D detection models via knowledge distillation and model optimization for edge deployment.",
+        "Improved robustness of perception modules for autonomous driving under diverse traffic scenarios."
+      ]
+    },
+    {
+      role: "Software Development Engineer Intern",
+      company: "Bytedance(TikTok)",
+      companylogo: require("./assets/images/bytedanceLogo.png"),
+      date: "Aug 2021 - Jul 2022",
+      desc: "",
+      descBullets: [
+        "Designed and maintained feature rollout logic for TikTok's gray release platform, enabling safe and scalable staged deployments to millions of users across regions and devices.",
+        "Automated release workflows and rollback pipelines using internal DevOps tools, reducing manual overhead and improving release reliability."
+      ]
     }
   ]
 };
