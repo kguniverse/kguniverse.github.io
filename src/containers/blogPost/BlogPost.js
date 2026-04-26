@@ -58,7 +58,7 @@ function BlogPostContent() {
   };
 
   return (
-    <div className={isDark ? "dark-mode blog-post-page" : "blog-post-page"}>
+    <div className={isDark ? "page dark-mode blog-post-page" : "page blog-post-page"}>
       <Header />
       <article
         className={isDark ? "blog-post-article dark-mode" : "blog-post-article"}
@@ -91,7 +91,7 @@ export default function BlogPost() {
   const [isDark, setIsDark] = useLocalStorage("isDark", darkPref.matches);
   const changeTheme = () => setIsDark(!isDark);
   return (
-    <div className={isDark ? "dark-mode" : null}>
+    <div className={isDark ? "page dark-mode" : "page"}>
       <StyleProvider value={{isDark, changeTheme}}>
         <BlogPostContent />
       </StyleProvider>
