@@ -7,42 +7,39 @@ export default function AchievementCard({cardInfo, isDark}) {
       console.log(`URL for ${name} not found`);
       return;
     }
-    var win = window.open(url, "_blank");
+    const win = window.open(url, "_blank");
     win.focus();
   }
 
+  const hasLinks = Array.isArray(cardInfo.footer) && cardInfo.footer.length > 0;
+
   return (
-    <div className={isDark ? "dark-mode certificate-card" : "certificate-card"}>
-      <div className="certificate-image-div">
+    <article className={isDark ? "award-row dark-mode" : "award-row"}>
+      {cardInfo.image && (
         <img
+          className="award-row__icon"
           src={cardInfo.image}
-          alt={cardInfo.imageAlt || "Card Thumbnail"}
-          className="card-image"
-        ></img>
+          alt={cardInfo.imageAlt || cardInfo.title}
+        />
+      )}
+      <div className="award-row__body">
+        <h3 className="award-row__title">{cardInfo.title}</h3>
+        <p className="award-row__desc">{cardInfo.description}</p>
+        {hasLinks && (
+          <div className="award-row__links">
+            {cardInfo.footer.map((link, i) => (
+              <button
+                key={i}
+                type="button"
+                className="award-row__link"
+                onClick={() => openUrlInNewTab(link.url, link.name)}
+              >
+                {link.name}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
-      <div className="certificate-detail-div">
-        <h5 className={isDark ? "dark-mode card-title" : "card-title"}>
-          {cardInfo.title}
-        </h5>
-        <p className={isDark ? "dark-mode card-subtitle" : "card-subtitle"}>
-          {cardInfo.description}
-        </p>
-      </div>
-      <div className="certificate-card-footer">
-        {cardInfo.footer.map((v, i) => {
-          return (
-            <span
-              key={i}
-              className={
-                isDark ? "dark-mode certificate-tag" : "certificate-tag"
-              }
-              onClick={() => openUrlInNewTab(v.url, v.name)}
-            >
-              {v.name}
-            </span>
-          );
-        })}
-      </div>
-    </div>
+    </article>
   );
 }

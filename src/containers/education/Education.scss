@@ -1,50 +1,19 @@
-.education-heading {
-  font-size: 56px;
-  font-weight: 400;
+@import "../../globalColor";
+
+.education__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.education-section {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  padding: 20px 0px;
-  margin: 0px auto;
-  margin-top: 2rem;
+.education__item {
+  border-top: 1px solid $border;
 }
 
-.education-section > * {
-  flex: 1;
-  margin-bottom: 30px;
+.education__item:first-child {
+  border-top: none;
 }
 
-.education-card-container {
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-}
-
-@media (max-width: 1380px) {
-  .education-card-container {
-    padding-top: 0px;
-  }
-  .education-heading {
-    font-size: 40px;
-  }
-  .education-text-subtitle {
-    font-size: 18px;
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .education-card-container {
-    padding-top: 0px;
-  }
-  .education-heading {
-    font-size: 30px;
-    text-align: center;
-  }
-  .education-text-subtitle {
-    font-size: 16px;
-  }
+.dark-mode .education__item {
+  border-top-color: $borderDark;
 }

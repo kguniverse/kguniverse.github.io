@@ -1,77 +1,85 @@
-@import "../../_globalColor";
+@import "../../globalColor";
 
-.card-image {
-  max-width: 100%;
-  height: auto;
-  width: 250px;
-}
-.card-title {
-  color: $titleColor;
-  font-size: 1.375rem;
-  line-height: 24px;
-  font-weight: 700;
-  margin: 15px 0 0 0;
-}
-.card-subtitle {
-  color: $cardSubtitle;
-  font-size: 1.063rem;
-  line-height: 1.5rem;
-}
-.certificate-card {
-  background-color: $lightBackground2;
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.certificate-detail-div {
-  text-align: center;
-}
-.certificate-card:hover {
-  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
-}
-.dark-mode.certificate-card:hover {
-  box-shadow: $achievementCertificateCardHoverDark 0px 20px 30px -10px;
-}
-.certificate-image-div {
-  position: relative;
-  height: 250px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.achievement-cards-div {
+.award-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem 1rem;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px 0;
 }
-.certificate-card-footer {
+
+.award-row__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: $surface;
+  border: 1px solid $border;
+  padding: 6px;
+}
+
+.award-row.dark-mode .award-row__icon {
+  background: $surfaceDark;
+  border-color: $borderDark;
+}
+
+.award-row__body {
+  min-width: 0;
+}
+
+.award-row__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: $textPrimary;
+  letter-spacing: -0.005em;
+}
+
+.award-row.dark-mode .award-row__title {
+  color: $textPrimaryDark;
+}
+
+.award-row__desc {
+  margin: 4px 0 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: $textSecondary;
+}
+
+.award-row.dark-mode .award-row__desc {
+  color: $textSecondaryDark;
+}
+
+.award-row__links {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
 }
-.certificate-card-footer span.certificate-tag {
-  background: $buttonColor;
-  color: $lightBackground3;
-  vertical-align: middle;
-  align-items: center;
-  border-radius: 4px;
-  display: inline-flex;
-  font-size: 0.75rem;
-  height: 2em;
-  justify-content: center;
-  white-space: nowrap;
-  line-height: 1.5;
-  margin: 0 0.5rem 0.5rem 0;
-  padding: 0 0.75em;
+
+.award-row__link {
+  appearance: none;
+  border: 1px solid $border;
+  background: transparent;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  color: $textSecondary;
   cursor: pointer;
-  transition: 0.2s ease-in;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
-span.certificate-tag:hover {
-  background: $buttonHover;
+
+.award-row__link:hover {
+  color: $accent;
+  border-color: $accent;
+}
+
+.award-row.dark-mode .award-row__link {
+  border-color: $borderDark;
+  color: $textSecondaryDark;
+}
+
+.award-row.dark-mode .award-row__link:hover {
+  color: $accentDark;
+  border-color: $accentDark;
 }
