@@ -21,11 +21,9 @@ const illustration = {
 
 const greeting = {
   username: "Qiankai Wang",
-  title: "Hi all, I'm Qiankai(Kevin)",
+  title: "Hi all, I'm Qiankai (Kevin)",
   subTitle: emoji(
-    "A passionate Full Stack Software Developer 🚀 Full-stack \
-    engineer with expertise in AI model optimization, medical imaging pipelines, \
-    and cloud-integrated solutions for healthcare and scientific applications "
+    "Software engineer building agentic AI systems, medical imaging pipelines, and the cloud-native infrastructure that takes them from research to production."
   ),
   resumeLink: "", // Set to empty to hide the button
   displayGreeting: true // Set false to hide this section, defaults to true
@@ -36,7 +34,7 @@ const greeting = {
 const socialMediaLinks = {
   github: "https://github.com/kguniverse",
   linkedin: "https://www.linkedin.com/in/qiankai-wang/",
-  gmail: "mailto://kkwang0805@gmail.com",
+  gmail: "kkwang0805@gmail.com",
   googleScholar: "https://scholar.google.com/citations?user=nqoovSEAAAAJ&hl=en",
   // gitlab: "https://gitlab.com/saadpasta",
   // facebook: "https://www.facebook.com/saad.pasta7",
@@ -52,25 +50,19 @@ const socialMediaLinks = {
 const skillsSection = {
   title: "What I do",
   subTitle:
-    "Full-stack \
-    engineer with expertise in AI model optimization, medical imaging pipelines, \
-    and cloud-integrated solutions for healthcare and scientific applications",
+    "Full-stack engineer specializing in AI model optimization, medical imaging pipelines, and cloud-native infrastructure for healthcare and scientific applications.",
   skills: [
     emoji(
-      "Full-Stack & Cloud-AI Integration: Proficient in building and deploying \
-      full-stack applications with cloud-native tools (e.g., AWS, Kubernetes, MLFlows), \
-      and integrating AI models into scalable production pipelines."
+      "Full-Stack & Cloud-AI Integration: Build and ship production-grade full-stack applications on cloud-native stacks (AWS, Kubernetes, MLflow), wiring AI models into scalable end-to-end pipelines."
     ),
     emoji(
-      "AI Model Training & Optimization: Skilled in training deep learning models \
-       with PyTorch and TensorFlow, optimizing inference with ONNX Runtime and TensorRT for low-latency,\
-        high-throughput applications."
+      "AI Model Training & Optimization: Train deep learning models in PyTorch and TensorFlow, then optimize inference with ONNX Runtime and TensorRT to hit low-latency, high-throughput targets in production."
     ),
     emoji(
-      "Medical Imaging & Device Workflow: Capable of processing multi-format medical images (DICOM, OME-TIFF, WSI), developing AI models for histological and radiological tasks, and integrating data from MRI and remote sensing devices."
+      "Medical Imaging & Device Workflows: Process multi-format medical images (DICOM, OME-TIFF, WSI), develop AI models for histology and radiology tasks, and integrate data from MRI and remote sensing devices."
     ),
     emoji(
-      "Low-Level Systems & Embedded Development: Experienced in systems programming with C++, Rust, and x86 assembly; familiar with compiler principles, embedded development, and implementing communication protocols for performance-critical applications."
+      "Low-Level Systems & Embedded Development: Systems programming in C++, Rust, and x86 assembly, with hands-on experience in compilers, embedded firmware, and communication protocols for performance-critical workloads."
     )
   ],
 
@@ -132,17 +124,15 @@ const educationInfo = {
       logo: require("./assets/images/waterlooLogo.png"),
       subHeader: "Master of Applied Science in Systems Design Engineering",
       duration: "September 2023 - August 2025",
-      desc: "Participated in the research of Medical Image Processing and published 1 journal paper.",
-      descBullets: [
-        "paper published: Wang Q, Tweel J E D, Reza P H, et al. Pathology-Guided Virtual Staining Metric for Evaluation and Training[J]. arXiv preprint arXiv:2507.12624, 2025."
-      ]
+      desc: "Conducted research in medical image processing and authored a first-author preprint on virtual staining evaluation.",
+      descBullets: []
     },
     {
       schoolName: "Beijing University of Posts and Telecommunications",
       logo: require("./assets/images/buptLogo.png"),
       subHeader: "Bachelor of Engineering in Computer Science",
       duration: "September 2019 - June 2023",
-      desc: "Ranked top 10% in the program. Took courses about Software Engineering, Web Security, Computer Architecture, Deep Learning, Communication Networks, etc.",
+      desc: "Graduated in the top 10% of the program. Coursework spanned Software Engineering, Web Security, Computer Architecture, Deep Learning, and Communication Networks.",
       descBullets: []
     }
   ]
@@ -175,15 +165,26 @@ const workExperiences = {
   display: true, //Set it to true to show workExperiences Section
   experience: [
     {
+      role: "Software Engineer",
+      company: "Hextom",
+      companylogo: require("./assets/images/hextomLogo.png"),
+      date: "Sep 2025 - Present",
+      desc: "Building AI-powered infrastructure for the Hextom Shopify app suite, focused on agentic systems and large-scale image processing.",
+      descBullets: [
+        "Designed and shipped an LLM-based agent system that powers in-app automation, letting merchants drive complex workflows through natural-language commands.",
+        "Built an asynchronous batch image-processing framework for high-throughput product image generation and transformation, scaled to handle production merchant traffic."
+      ]
+    },
+    {
       role: "Researcher and Software Architect",
       company: "Photomedicines Lab",
       companylogo: require("./assets/images/pmlLogo.png"),
       date: "Oct 2023 - Aug 2025",
-      desc: "Led the development of AI-driven medical imaging solutions, focusing on histopathology and radiology.",
+      desc: "Led development of AI-driven medical imaging solutions across histopathology and radiology workflows.",
       descBullets: [
-        "Developed workflows and models for H&E virtual staining and quality control systems, introducing pathology-aware image similarity methods.",
-        "paper published: Wang Q, Tweel J E D, Reza P H, et al. Pathology-Guided Virtual Staining Metric for Evaluation and Training[J]. arXiv preprint arXiv:2507.12624, 2025.",
-        "Built cloud-native pipelines for histology image processing with Kubernetes and AWS, enabling scalable AI workflows."
+        "Designed virtual H&E staining workflows and quality-control models, introducing a novel pathology-aware image similarity metric.",
+        "First-author publication: Wang Q, Tweel J E D, Reza P H, et al. Pathology-Guided Virtual Staining Metric for Evaluation and Training. arXiv:2507.12624, 2025.",
+        "Architected cloud-native histology image-processing pipelines on Kubernetes and AWS, enabling scalable AI workflows for downstream research."
       ]
     },
     {
@@ -191,21 +192,21 @@ const workExperiences = {
       company: "Cambricon Technologies",
       companylogo: require("./assets/images/cambriconLogo.png"),
       date: "Aug 2022 - Oct 2023",
-      desc: "Developed and optimized AI models for autonomous driving perception systems, focusing on 3D object detection and segmentation.",
+      desc: "Developed and optimized perception models for autonomous-driving systems, with a focus on 3D object detection and segmentation.",
       descBullets: [
-        "Accelerated BEV-based 3D detection models via knowledge distillation and model optimization for edge deployment.",
-        "Improved robustness of perception modules for autonomous driving under diverse traffic scenarios."
+        "Accelerated BEV-based 3D detection models through knowledge distillation and inference optimization, making them viable for edge deployment.",
+        "Hardened perception modules against diverse traffic scenarios, measurably improving robustness in adverse conditions."
       ]
     },
     {
       role: "Software Development Engineer Intern",
-      company: "Bytedance(TikTok)",
+      company: "ByteDance (TikTok)",
       companylogo: require("./assets/images/bytedanceLogo.png"),
       date: "Aug 2021 - Jul 2022",
-      desc: "",
+      desc: "Worked on TikTok's release infrastructure, building tooling that made staged rollouts to hundreds of millions of users safe and repeatable.",
       descBullets: [
-        "Designed and maintained feature rollout logic for TikTok's gray release platform, enabling safe and scalable staged deployments to millions of users across regions and devices.",
-        "Automated release workflows and rollback pipelines using internal DevOps tools, reducing manual overhead and improving release reliability."
+        "Designed and maintained feature-rollout logic for TikTok's gray release platform, enabling staged deployments across regions and devices for hundreds of millions of users.",
+        "Automated release and rollback pipelines on internal DevOps tooling, cutting manual overhead and improving deployment reliability."
       ]
     }
   ]
@@ -215,8 +216,8 @@ const workExperiences = {
 To know how to get github key look at readme.md */
 
 const openSource = {
-  showGithubProfile: "true", // Set true or false to show Contact profile using Github, defaults to true
-  display: true // Set false to hide this section, defaults to true
+  showGithubProfile: "false", // Set true or false to show Contact profile using Github, defaults to true
+  display: false // Set false to hide this section, defaults to true
 };
 
 // Some big projects you have worked on
@@ -256,9 +257,9 @@ const bigProjects = {
 // Include certificates, talks etc
 
 const achievementSection = {
-  title: emoji("Achievements And Certifications 🏆 "),
+  title: emoji("Achievements & Certifications 🏆"),
   subtitle:
-    "Achievements, Certifications, Award Letters and Some Cool Stuff that I have done !",
+    "A few awards, certifications, and milestones I'm proud of.",
 
   achievementsCards: [
     {
@@ -373,8 +374,8 @@ const resumeSection = {
 const contactInfo = {
   title: emoji("Contact Me ☎️"),
   subtitle:
-    "Discuss a project or just want to say hi? My Inbox is open for all.",
-  number: "+1 4378559032",
+    "Have a project in mind or just want to say hi? My inbox is always open.",
+  number: "+1 (437) 855-9032",
   email_address: "kkwang0805@gmail.com"
 };
 
