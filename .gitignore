@@ -27,3 +27,9 @@ public/profile.json
 public/blogs.json
 
 README_old.md
+
+# local agent state
+.claude/
+
+# git worktrees
+worktrees/
