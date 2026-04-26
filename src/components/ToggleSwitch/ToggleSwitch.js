@@ -12,10 +12,7 @@ const ToggleSwitch = () => {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      <i
-        className={isDark ? "fas fa-sun" : "fas fa-moon"}
-        aria-hidden="true"
-      />
+      <i className={isDark ? "fas fa-sun" : "fas fa-moon"} aria-hidden="true" />
     </button>
   );
 };

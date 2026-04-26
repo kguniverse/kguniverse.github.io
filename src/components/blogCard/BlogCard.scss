@@ -73,7 +73,8 @@
   border: 1px solid $border;
   color: $textSecondary;
   background-color: transparent;
-  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+  transition: border-color 0.15s ease, color 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .dark-mode .go-corner {

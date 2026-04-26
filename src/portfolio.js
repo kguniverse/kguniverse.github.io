@@ -218,8 +218,7 @@ const openSource = {
   showGithubProfile: "false",
   username: "kguniverse",
   title: "Open Source",
-  subtitle:
-    "Pinned projects on GitHub — pulled live from my profile.",
+  subtitle: "Pinned projects on GitHub — pulled live from my profile.",
   display: true
 };
 

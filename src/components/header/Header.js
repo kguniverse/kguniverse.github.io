@@ -28,7 +28,9 @@ function Header() {
     <header className={isDark ? "site-header dark-mode" : "site-header"}>
       <div className="site-header__inner">
         <a href="/" className="site-header__brand" aria-label="Home">
-          <span className="site-header__brand-mark">{getInitials(greeting.username)}</span>
+          <span className="site-header__brand-mark">
+            {getInitials(greeting.username)}
+          </span>
           <span className="site-header__brand-name">{greeting.username}</span>
         </a>
 

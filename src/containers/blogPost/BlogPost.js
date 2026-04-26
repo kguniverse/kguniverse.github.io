@@ -58,7 +58,11 @@ function BlogPostContent() {
   };
 
   return (
-    <div className={isDark ? "page dark-mode blog-post-page" : "page blog-post-page"}>
+    <div
+      className={
+        isDark ? "page dark-mode blog-post-page" : "page blog-post-page"
+      }
+    >
       <Header />
       <article
         className={isDark ? "blog-post-article dark-mode" : "blog-post-article"}

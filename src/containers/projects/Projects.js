@@ -153,9 +153,7 @@ async function fetchPinned(username) {
   }
 
   // Fallback: egoist
-  const res = await fetch(
-    `https://gh-pinned-repos.egoist.dev/?username=${u}`
-  );
+  const res = await fetch(`https://gh-pinned-repos.egoist.dev/?username=${u}`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
   if (!Array.isArray(data)) return [];

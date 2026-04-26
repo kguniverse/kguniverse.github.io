@@ -175,13 +175,19 @@
   .site-header__menu-btn:checked ~ .site-header__nav {
     display: block;
   }
-  .site-header__menu-btn:checked ~ .site-header__menu-icon .site-header__navicon {
+  .site-header__menu-btn:checked
+    ~ .site-header__menu-icon
+    .site-header__navicon {
     background: transparent;
   }
-  .site-header__menu-btn:checked ~ .site-header__menu-icon .site-header__navicon::before {
+  .site-header__menu-btn:checked
+    ~ .site-header__menu-icon
+    .site-header__navicon::before {
     transform: translateY(6px) rotate(45deg);
   }
-  .site-header__menu-btn:checked ~ .site-header__menu-icon .site-header__navicon::after {
+  .site-header__menu-btn:checked
+    ~ .site-header__menu-icon
+    .site-header__navicon::after {
     transform: translateY(-6px) rotate(-45deg);
   }
   .site-header__nav ul {
