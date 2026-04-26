@@ -10,18 +10,19 @@ export default function Footer() {
     <Fade bottom duration={1000} distance="5px">
       <div className="footer-div">
         <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
-          {emoji("Made with Kevin Wang's Universe ✨")}
+          {emoji(
+            `© ${new Date().getFullYear()} Qiankai Wang · Made with Kevin Wang's Universe ✨`
+          )}
         </p>
-        {/* <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
-          Theme by{" "}
+        <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
           <a
-            href="https://github.com/saadpasta/developerFolio"
+            href="https://github.com/kguniverse/kguniverse.github.io"
             target="_blank"
             rel="noreferrer"
           >
-            developerFolio
+            Source on GitHub
           </a>
-        </p> */}
+        </p>
       </div>
     </Fade>
   );
