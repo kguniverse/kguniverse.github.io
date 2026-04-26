@@ -1,0 +1,221 @@
+@import "../../_globalColor";
+
+.blog-post-page {
+  min-height: 100vh;
+  background-color: $lightBackground1;
+
+  &.dark-mode {
+    background-color: $darkBackground;
+    color: $textColorDark;
+  }
+}
+
+.blog-post-article {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 100px 24px 80px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: $textColor;
+
+  &.dark-mode {
+    color: $textColorDark;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin: 0.4em 0 0.6em;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    margin: 1.6em 0 0.6em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin: 1.4em 0 0.5em;
+  }
+
+  p {
+    margin: 0.9em 0;
+  }
+
+  em {
+    color: inherit;
+    opacity: 0.8;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.4em;
+    margin: 0.8em 0;
+  }
+
+  li {
+    margin: 0.3em 0;
+  }
+
+  a {
+    color: $buttonColor;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: $buttonHover;
+    }
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid rgba(128, 128, 128, 0.3);
+    margin: 2.4em 0;
+  }
+
+  blockquote {
+    margin: 1.2em 0;
+    padding: 0.4em 1em;
+    border-left: 4px solid $buttonColor;
+    background: rgba(85, 25, 139, 0.05);
+    color: inherit;
+    opacity: 0.9;
+  }
+
+  :not(pre) > code {
+    background: rgba(128, 128, 128, 0.18);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.92em;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  pre.code-block {
+    background: #0f1419;
+    color: #e6e6e6;
+    padding: 16px 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.2em 0;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+
+    code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    margin: 1.2em 0;
+    width: 100%;
+  }
+
+  th,
+  td {
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    padding: 8px 12px;
+    text-align: left;
+  }
+
+  th {
+    background: rgba(128, 128, 128, 0.12);
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .mermaid-wrap {
+    margin: 1.8em 0;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04),
+      0 8px 24px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+  }
+
+  .mermaid-diagram {
+    padding: 28px 20px;
+    overflow-x: auto;
+    text-align: center;
+
+    svg {
+      max-width: 100%;
+      height: auto;
+      display: inline-block;
+    }
+
+    .cluster rect {
+      rx: 10px;
+      ry: 10px;
+    }
+
+    .nodeLabel,
+    .edgeLabel,
+    .cluster-label {
+      font-size: 13px;
+    }
+
+    .edgeLabel {
+      background-color: #ffffff !important;
+      padding: 1px 4px;
+    }
+  }
+
+  &.dark-mode .mermaid-wrap {
+    background: #f5f5f7;
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  .mermaid-error {
+    background: #fee2e2;
+    color: #7f1d1d;
+    padding: 12px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+.blog-post-back {
+  display: inline-block;
+  margin-bottom: 1.5em;
+  font-size: 0.95rem;
+  color: $buttonColor;
+  text-decoration: none;
+
+  &:hover {
+    color: $buttonHover;
+    text-decoration: underline;
+  }
+}
+
+.blog-post-status {
+  text-align: center;
+  padding: 60px 0;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 600px) {
+  .blog-post-article {
+    padding: 80px 18px 60px;
+    font-size: 1rem;
+
+    h1 {
+      font-size: 1.9rem;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+    }
+  }
+}

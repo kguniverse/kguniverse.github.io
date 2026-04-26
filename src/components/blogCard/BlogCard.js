@@ -1,8 +1,13 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import "./BlogCard.scss";
 
+function isInternal(url) {
+  return typeof url === "string" && url.startsWith("/");
+}
+
 export default function BlogCard({blog, isDark}) {
-  function openUrlInNewTab(url, name) {
+  function openExternal(url, name) {
     if (!url) {
       console.log(`URL for ${name} not found`);
       return;
@@ -11,25 +16,40 @@ export default function BlogCard({blog, isDark}) {
     win.focus();
   }
 
+  const cardInner = (
+    <a
+      className={isDark ? "dark-mode blog-card blog-card-shadow" : "blog-card"}
+      href={isInternal(blog.url) ? blog.url : "#blog"}
+      onClick={e => {
+        if (!isInternal(blog.url)) e.preventDefault();
+      }}
+    >
+      <h3 className={isDark ? "small-dark blog-title" : "blog-title"}>
+        {blog.title}
+      </h3>
+      <p className={isDark ? "small-dark small" : "small"}>
+        {blog.description}
+      </p>
+      <div className="go-corner">
+        <div className="go-arrow">→</div>
+      </div>
+    </a>
+  );
+
+  if (isInternal(blog.url)) {
+    return (
+      <Link to={blog.url} className="blog-card-link">
+        <div className={isDark ? "blog-container dark-mode" : "blog-container"}>
+          {cardInner}
+        </div>
+      </Link>
+    );
+  }
+
   return (
-    <div onClick={() => openUrlInNewTab(blog.url, blog.title)}>
+    <div onClick={() => openExternal(blog.url, blog.title)}>
       <div className={isDark ? "blog-container dark-mode" : "blog-container"}>
-        <a
-          className={
-            isDark ? "dark-mode blog-card blog-card-shadow" : "blog-card"
-          }
-          href="#blog"
-        >
-          <h3 className={isDark ? "small-dark blog-title" : "blog-title"}>
-            {blog.title}
-          </h3>
-          <p className={isDark ? "small-dark small" : "small"}>
-            {blog.description}
-          </p>
-          <div className="go-corner">
-            <div className="go-arrow">→</div>
-          </div>
-        </a>
+        {cardInner}
       </div>
     </div>
   );

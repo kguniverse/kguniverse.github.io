@@ -4,6 +4,12 @@
   color: $textColorDark !important;
 }
 
+.blog-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .blog-container {
   border-radius: 10px;
   color: $blogCardContainerColor;
