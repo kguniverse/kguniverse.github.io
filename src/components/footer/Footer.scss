@@ -1,15 +1,52 @@
-@import "../../_globalColor";
+@import "../../globalColor";
 
-.footer-text {
-  text-align: center;
-  color: $subTitle !important;
+.site-footer {
+  border-top: 1px solid $border;
+  margin-top: 32px;
 }
 
-.dark-mode {
-  color: $textColorDark !important;
+.site-footer.dark-mode {
+  border-top-color: $borderDark;
 }
 
-.footer-div {
-  margin-top: 2rem;
-  padding-bottom: 1rem;
+.site-footer__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.site-footer__line {
+  margin: 0;
+  font-size: 0.8rem;
+  color: $textMuted;
+}
+
+.site-footer.dark-mode .site-footer__line {
+  color: $textMutedDark;
+}
+
+.site-footer__line a {
+  color: $textSecondary;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.site-footer__line a:hover {
+  color: $textPrimary;
+  border-bottom-color: $border;
+}
+
+.site-footer.dark-mode .site-footer__line a {
+  color: $textSecondaryDark;
+}
+
+.site-footer.dark-mode .site-footer__line a:hover {
+  color: $textPrimaryDark;
+  border-bottom-color: $borderDark;
 }

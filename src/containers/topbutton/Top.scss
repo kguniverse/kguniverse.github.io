@@ -1,22 +1,41 @@
-@import "../../_globalColor";
+@import "../../globalColor";
 
 #topButton {
   visibility: hidden;
   position: fixed;
-  bottom: 20px;
-  right: 30px;
+  bottom: 24px;
+  right: 24px;
   z-index: 99;
-  border: none;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $border;
   outline: none;
-  background-color: $buttonColor;
-  color: white;
+  background-color: $surface;
+  color: $textSecondary;
   cursor: pointer;
-  padding: 15px;
-  border-radius: 15px;
-  font-size: 25px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px $lightBoxShadow;
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
 
 #topButton:hover {
-  background-color: $topButtonHover;
-  transition: all ease-in-out 0.2s;
+  color: $accent;
+  border-color: $accent;
+  transform: translateY(-1px);
+}
+
+.dark-mode #topButton {
+  background-color: $surfaceDark;
+  border-color: $borderDark;
+  color: $textSecondaryDark;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode #topButton:hover {
+  color: $accentDark;
+  border-color: $accentDark;
 }

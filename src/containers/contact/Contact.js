@@ -1,69 +1,41 @@
 import React, {useContext} from "react";
 import "./Contact.scss";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
-import {illustration, contactInfo} from "../../portfolio";
-import {Fade} from "react-reveal";
-import email from "../../assets/lottie/email";
-import DisplayLottie from "../../components/displayLottie/DisplayLottie";
+import {contactInfo} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
 
 export default function Contact() {
   const {isDark} = useContext(StyleContext);
   return (
-    <Fade bottom duration={1000} distance="20px">
-      <div className="main contact-margin-top" id="contact">
-        <div className="contact-div-main">
-          <div className="contact-header">
-            <h1 className="heading contact-title">{contactInfo.title}</h1>
-            <p
-              className={
-                isDark
-                  ? "dark-mode contact-subtitle"
-                  : "subTitle contact-subtitle"
-              }
-            >
-              {contactInfo.subtitle}
-            </p>
-            <div
-              className={
-                isDark ? "dark-mode contact-text-div" : "contact-text-div"
-              }
-            >
-              {contactInfo.number && (
-                <>
-                  <a
-                    className="contact-detail"
-                    href={"tel:" + contactInfo.number}
-                  >
-                    {contactInfo.number}
-                  </a>
-                  <br />
-                  <br />
-                </>
-              )}
-              <a
-                className="contact-detail-email"
-                href={"mailto:" + contactInfo.email_address}
-              >
-                {contactInfo.email_address}
-              </a>
-              <br />
-              <br />
-              <SocialMedia />
-            </div>
-          </div>
-          <div className="contact-image-div">
-            {illustration.animated ? (
-              <DisplayLottie animationData={email} />
-            ) : (
-              <img
-                alt="Man working"
-                src={require("../../assets/images/contactMailDark.svg")}
-              ></img>
-            )}
-          </div>
-        </div>
+    <section
+      id="contact"
+      className={isDark ? "section contact dark-mode" : "section contact"}
+    >
+      <p className="section-label">07 — Contact</p>
+      <h2 className="section-title">Say hi</h2>
+      <p className="section-lede">
+        Have a project in mind, want to collaborate, or just want to chat about
+        AI, infra, or imaging? My inbox is open.
+      </p>
+
+      <div className="contact__lines">
+        <a
+          className="contact__email"
+          href={"mailto:" + contactInfo.email_address}
+        >
+          {contactInfo.email_address}
+          <span aria-hidden="true">↗</span>
+        </a>
+        {contactInfo.number && (
+          <a className="contact__phone" href={"tel:" + contactInfo.number}>
+            {contactInfo.number}
+          </a>
+        )}
       </div>
-    </Fade>
+
+      <div className="contact__social">
+        <SocialMedia />
+      </div>
+    </section>
   );
 }

@@ -1,20 +1,18 @@
 import React, {useContext} from "react";
 import "./Footer.scss";
-import {Fade} from "react-reveal";
-import emoji from "react-easy-emoji";
 import StyleContext from "../../contexts/StyleContext";
+import {greeting} from "../../portfolio";
 
 export default function Footer() {
   const {isDark} = useContext(StyleContext);
+  const year = new Date().getFullYear();
   return (
-    <Fade bottom duration={1000} distance="5px">
-      <div className="footer-div">
-        <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
-          {emoji(
-            `© ${new Date().getFullYear()} Qiankai Wang · Made with Kevin Wang's Universe ✨`
-          )}
+    <footer className={isDark ? "site-footer dark-mode" : "site-footer"}>
+      <div className="site-footer__inner">
+        <p className="site-footer__line">
+          © {year} {greeting.username}
         </p>
-        <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
+        <p className="site-footer__line">
           <a
             href="https://github.com/kguniverse/kguniverse.github.io"
             target="_blank"
@@ -24,6 +22,6 @@ export default function Footer() {
           </a>
         </p>
       </div>
-    </Fade>
+    </footer>
   );
 }
