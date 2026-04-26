@@ -1,31 +1,55 @@
-@import "../../_globalColor";
+@import "../../globalColor";
 
-.dev-icons {
-  padding-left: 0;
+.software-skills-main-div {
+  margin-top: 8px;
+}
+
+.software-skills-main-div .dev-icons {
   list-style: none;
-  font-size: 3rem;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .software-skill-inline {
-  display: inline-block;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid $border;
+  background-color: $surface;
+  font-size: 0.8rem;
+  color: $textSecondary;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.software-skill-inline:hover {
+  color: $accent;
+  border-color: $accent;
+}
+
+.dark-mode .software-skill-inline {
+  border-color: $borderDark;
+  background-color: transparent;
+  color: $textSecondaryDark;
+}
+
+.dark-mode .software-skill-inline:hover {
+  color: $accentDark;
+  border-color: $accentDark;
 }
 
 .software-skill-inline > i {
-  color: $subTitle;
+  font-size: 0.95rem;
+  color: inherit;
+  line-height: 1;
 }
 
-.software-skill-inline > i:hover {
-  color: $skillsColor;
-}
 .software-skill-inline > p {
-  color: $subTitle;
-  font-size: 10px;
-}
-.software-skill-inline > i:hover ~ p {
-  color: $skillsColor;
+  margin: 0;
+  font-size: 0.8rem;
+  color: inherit;
 }
