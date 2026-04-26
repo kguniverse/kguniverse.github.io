@@ -1,140 +1,83 @@
-@import "../../_globalColor";
+@import "../../globalColor";
 
-.main {
-  width: 90%;
-  padding: 20px 10px;
-  margin: 0px auto;
-  margin-top: 4rem;
-}
-.greet-main {
-  width: 90%;
-  padding: 20px 10px;
-  margin: 0px auto;
-  margin-top: 2rem;
+.hero {
+  padding-top: 96px;
+  padding-bottom: 64px;
 }
 
-.greeting-main {
+.hero__eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $textMuted;
+  margin: 0 0 24px;
+  font-weight: 500;
+}
+
+.hero.dark-mode .hero__eyebrow {
+  color: $textMutedDark;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+  color: $textPrimary;
+}
+
+.hero.dark-mode .hero__title {
+  color: $textPrimaryDark;
+}
+
+.hero__lede {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: $textSecondary;
+  margin: 0 0 36px;
+  max-width: 620px;
+}
+
+.hero.dark-mode .hero__lede {
+  color: $textSecondaryDark;
+}
+
+.hero__meta {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
-.subTitle {
-  color: $subTitle !important;
-}
-
-.greeting-main {
-  display: flex;
-}
-
-.greeting-main > * {
-  flex: 1;
-  margin-bottom: 30px;
-}
-
-.empty-div {
-  margin-bottom: 40px;
-}
-
-.button-greeting-div {
-  display: flex;
-  margin-top: 40px;
-}
-.download-link-button {
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: $accent;
   text-decoration: none;
+  padding: 8px 4px;
+  transition: gap 0.15s ease, color 0.15s ease;
 }
 
-.greeting-text {
-  font-size: 70px;
-  line-height: 1.1;
-  color: $textColor !important;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  max-width: 100%;
+.hero__cta:hover {
+  color: $accentHover;
+  gap: 12px;
 }
 
-.greeting-text-p {
-  font-size: 30px;
-  line-height: 40px;
-  overflow-wrap: break-word;
-  max-width: 100%;
+.hero.dark-mode .hero__cta {
+  color: $accentDark;
 }
 
-.greeting-text-div {
-  min-width: 0;
-  max-width: 100%;
+.hero.dark-mode .hero__cta:hover {
+  color: $accentDarkHover;
 }
 
-.greeting-image-div > img {
-  max-width: 100%;
-  height: auto;
-}
-
-.wave-emoji {
-  animation-duration: 1.8s;
-  animation-iteration-count: infinite;
-  animation-name: wave;
-  display: inline-block;
-  transform-origin: 70% 70%;
-}
-
-@keyframes wave {
-  0% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(-10deg);
-  }
-  20% {
-    transform: rotate(12deg);
-  }
-  30% {
-    transform: rotate(-10deg);
-  }
-  40% {
-    transform: rotate(9deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-/* Media Query */
-@media (max-width: 1380px) {
-  .greeting-text {
-    font-size: 50px;
-  }
-  .greeting-text-p {
-    font-size: 20px;
-  }
-}
-@media (max-width: 768px) {
-  .button-greeting-div {
-    justify-content: space-around;
-  }
-  .greeting-text {
-    font-size: 28px;
-    text-align: center;
-  }
-  .greeting-text-p {
-    font-size: 16px;
-    line-height: normal;
-    text-align: center;
-  }
-  .greeting-main {
-    display: block;
-  }
-  .greeting-image-div {
-    height: 256px;
-  }
-  .greet-main {
-    overflow-x: hidden;
-  }
-}
-
-@media (max-width: 320px) {
-  .main {
-    width: auto;
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 64px;
   }
 }
