@@ -191,7 +191,7 @@ const workExperiences = {
       role: "Machine Learning Engineer Intern",
       company: "Cambricon Technologies",
       companylogo: require("./assets/images/cambriconLogo.png"),
-      date: "Aug 2022 - Oct 2023",
+      date: "Aug 2022 - Jul 2023",
       desc: "Developed and optimized perception models for autonomous-driving systems, with a focus on 3D object detection and segmentation.",
       descBullets: [
         "Accelerated BEV-based 3D detection models through knowledge distillation and inference optimization, making them viable for edge deployment.",
