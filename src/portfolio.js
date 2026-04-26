@@ -8,7 +8,7 @@ import splashAnimation from "./assets/lottie/splashAnimation"; // Rename to your
 // Splash Screen
 
 const splashScreen = {
-  enabled: true, // set false to disable splash screen
+  enabled: false, // set false to disable splash screen
   animation: splashAnimation,
   duration: 2000 // Set animation duration as per your animation
 };
@@ -21,10 +21,9 @@ const illustration = {
 
 const greeting = {
   username: "Qiankai Wang",
-  title: "Hi all, I'm Qiankai (Kevin)",
-  subTitle: emoji(
-    "Software engineer building agentic AI systems, medical imaging pipelines, and the cloud-native infrastructure that takes them from research to production."
-  ),
+  title: "Hi, I'm Qiankai",
+  subTitle:
+    "Software engineer building agentic AI systems, medical imaging pipelines, and the cloud-native infrastructure that takes them from research to production.",
   resumeLink: "", // Set to empty to hide the button
   displayGreeting: true // Set false to hide this section, defaults to true
 };
@@ -216,8 +215,12 @@ const workExperiences = {
 To know how to get github key look at readme.md */
 
 const openSource = {
-  showGithubProfile: "false", // Set true or false to show Contact profile using Github, defaults to true
-  display: false // Set false to hide this section, defaults to true
+  showGithubProfile: "false",
+  username: "kguniverse",
+  title: "Open Source",
+  subtitle:
+    "Pinned projects on GitHub — pulled live from my profile.",
+  display: true
 };
 
 // Some big projects you have worked on
@@ -257,7 +260,7 @@ const bigProjects = {
 // Include certificates, talks etc
 
 const achievementSection = {
-  title: emoji("Achievements & Certifications 🏆"),
+  title: "Awards & certifications",
   subtitle: "A few awards, certifications, and milestones I'm proud of.",
 
   achievementsCards: [

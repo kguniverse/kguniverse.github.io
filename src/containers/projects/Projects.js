@@ -1,74 +1,170 @@
-import React, {useState, useEffect, useContext, Suspense, lazy} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "./Project.scss";
-import Button from "../../components/button/Button";
-import {openSource, socialMediaLinks} from "../../portfolio";
+import {openSource} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
-import Loading from "../../containers/loading/Loading";
+
+const STATUS = {
+  LOADING: "loading",
+  READY: "ready",
+  EMPTY: "empty",
+  ERROR: "error"
+};
+
 export default function Projects() {
-  const GithubRepoCard = lazy(() =>
-    import("../../components/githubRepoCard/GithubRepoCard")
-  );
-  const FailedLoading = () => null;
-  const renderLoader = () => <Loading />;
-  const [repo, setrepo] = useState([]);
-  // todo: remove useContex because is not supported
   const {isDark} = useContext(StyleContext);
+  const [repos, setRepos] = useState([]);
+  const [status, setStatus] = useState(STATUS.LOADING);
 
   useEffect(() => {
-    const getRepoData = () => {
-      fetch("/profile.json")
-        .then(result => {
-          if (result.ok) {
-            return result.json();
-          }
-          throw result;
-        })
-        .then(response => {
-          setrepoFunction(response.data.user.pinnedItems.edges);
-        })
-        .catch(function (error) {
-          console.error(
-            `${error} (because of this error, nothing is shown in place of Projects section. Also check if Projects section has been configured)`
-          );
-          setrepoFunction("Error");
-        });
+    if (!openSource.display) return;
+    const username = openSource.username;
+    let cancelled = false;
+
+    fetchPinned(username)
+      .then(data => {
+        if (cancelled) return;
+        if (!Array.isArray(data) || data.length === 0) {
+          setStatus(STATUS.EMPTY);
+          return;
+        }
+        setRepos(data);
+        setStatus(STATUS.READY);
+      })
+      .catch(() => {
+        if (!cancelled) setStatus(STATUS.ERROR);
+      });
+
+    return () => {
+      cancelled = true;
     };
-    getRepoData();
   }, []);
 
-  function setrepoFunction(array) {
-    setrepo(array);
+  if (!openSource.display) return null;
+
+  return (
+    <section
+      id="opensource"
+      className={isDark ? "section projects dark-mode" : "section projects"}
+    >
+      <p className="section-label">03 — Open Source</p>
+      <h2 className="section-title">{openSource.title}</h2>
+      <p className="section-lede">{openSource.subtitle}</p>
+
+      {status === STATUS.LOADING && (
+        <ul className="projects__list" aria-busy="true">
+          {Array.from({length: 6}).map((_, i) => (
+            <li key={i} className="projects__item">
+              <div className="proj-row proj-row--skeleton">
+                <span className="proj-row__lang skeleton skeleton--sm" />
+                <div className="proj-row__body">
+                  <span className="skeleton skeleton--md" />
+                  <span className="skeleton skeleton--lg" />
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {status === STATUS.ERROR && (
+        <p className="projects__status">
+          Couldn't reach GitHub right now.{" "}
+          <a
+            href={`https://github.com/${openSource.username}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View profile →
+          </a>
+        </p>
+      )}
+
+      {status === STATUS.EMPTY && (
+        <p className="projects__status">
+          No pinned projects yet.{" "}
+          <a
+            href={`https://github.com/${openSource.username}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View profile →
+          </a>
+        </p>
+      )}
+
+      {status === STATUS.READY && (
+        <ul className="projects__list">
+          {repos.map(repo => (
+            <li key={repo.name} className="projects__item">
+              <a
+                className="proj-row"
+                href={repo.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="proj-row__lang">{repo.language || "—"}</span>
+                <div className="proj-row__body">
+                  <h3 className="proj-row__name">
+                    {repo.name}
+                    <span className="proj-row__arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </h3>
+                  {repo.description && (
+                    <p className="proj-row__desc">{repo.description}</p>
+                  )}
+                  {(Number(repo.stars) > 0 || Number(repo.forks) > 0) && (
+                    <p className="proj-row__meta">
+                      {Number(repo.stars) > 0 && <span>★ {repo.stars}</span>}
+                      {Number(repo.forks) > 0 && <span>⑂ {repo.forks}</span>}
+                    </p>
+                  )}
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
+
+async function fetchPinned(username) {
+  const u = encodeURIComponent(username);
+
+  // Primary: berrysauce — currently reliable.
+  try {
+    const res = await fetch(`https://pinned.berrysauce.dev/get/${u}`);
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data) && data.length > 0) {
+        return data.map(r => ({
+          name: r.name,
+          link: `https://github.com/${r.author}/${r.name}`,
+          description: r.description,
+          language: r.language,
+          stars: r.stars,
+          forks: r.forks
+        }));
+      }
+    }
+  } catch (e) {
+    // fall through to egoist
   }
-  if (
-    !(typeof repo === "string" || repo instanceof String) &&
-    openSource.display
-  ) {
-    return (
-      <Suspense fallback={renderLoader()}>
-        <div className="main" id="opensource">
-          <h1 className="project-title">Open Source Projects</h1>
-          <div className="repo-cards-div-main">
-            {repo.map((v, i) => {
-              if (!v) {
-                console.error(
-                  `Github Object for repository number : ${i} is undefined`
-                );
-              }
-              return (
-                <GithubRepoCard repo={v} key={v.node.id} isDark={isDark} />
-              );
-            })}
-          </div>
-          <Button
-            text={"More Projects"}
-            className="project-button"
-            href={socialMediaLinks.github}
-            newTab={true}
-          />
-        </div>
-      </Suspense>
-    );
-  } else {
-    return <FailedLoading />;
-  }
+
+  // Fallback: egoist
+  const res = await fetch(
+    `https://gh-pinned-repos.egoist.dev/?username=${u}`
+  );
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+  if (!Array.isArray(data)) return [];
+  return data.map(r => ({
+    name: r.repo,
+    link: r.link,
+    description: r.description,
+    language: r.language,
+    stars: r.stars,
+    forks: r.forks
+  }));
 }

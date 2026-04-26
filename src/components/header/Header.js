@@ -1,5 +1,4 @@
 import React, {useContext} from "react";
-import Headroom from "react-headroom";
 import "./Header.scss";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import StyleContext from "../../contexts/StyleContext";
@@ -8,89 +7,70 @@ import {
   workExperiences,
   skillsSection,
   educationInfo,
-  openSource,
   blogSection,
-  talkSection,
   achievementSection,
-  resumeSection
+  openSource
 } from "../../portfolio";
 
 function Header() {
   const {isDark} = useContext(StyleContext);
-  const viewExperience = workExperiences.display;
-  const viewOpenSource = openSource.display;
-  const viewSkills = skillsSection.display;
-  const viewEducation = educationInfo.display;
-  const viewAchievement = achievementSection.display;
-  const viewBlog = blogSection.display;
-  const viewTalks = talkSection.display;
-  const viewResume = resumeSection.display;
+  const items = [
+    skillsSection.display && {href: "#skills", label: "Work"},
+    blogSection.display && {href: "#blogs", label: "Writing"},
+    openSource.display && {href: "#opensource", label: "Open Source"},
+    workExperiences.display && {href: "#experience", label: "Experience"},
+    educationInfo.display && {href: "#education", label: "Education"},
+    achievementSection.display && {href: "#achievements", label: "Awards"},
+    {href: "#contact", label: "Contact"}
+  ].filter(Boolean);
 
   return (
-    <Headroom>
-      <header className={isDark ? "dark-menu header" : "header"}>
-        <a href="/" className="logo">
-          <span className="grey-color"> &lt;</span>
-          <span className="logo-name">{greeting.username}</span>
-          <span className="grey-color">/&gt;</span>
+    <header className={isDark ? "site-header dark-mode" : "site-header"}>
+      <div className="site-header__inner">
+        <a href="/" className="site-header__brand" aria-label="Home">
+          <span className="site-header__brand-mark">{getInitials(greeting.username)}</span>
+          <span className="site-header__brand-name">{greeting.username}</span>
         </a>
-        <input className="menu-btn" type="checkbox" id="menu-btn" />
-        <label className="menu-icon" htmlFor="menu-btn">
-          <span className={isDark ? "navicon navicon-dark" : "navicon"}></span>
+
+        <input
+          className="site-header__menu-btn"
+          type="checkbox"
+          id="site-menu"
+        />
+        <label
+          className="site-header__menu-icon"
+          htmlFor="site-menu"
+          aria-label="Open menu"
+        >
+          <span className="site-header__navicon" />
         </label>
-        <ul className={isDark ? "dark-menu menu" : "menu"}>
-          {viewSkills && (
-            <li>
-              <a href="#skills">Skills</a>
-            </li>
-          )}
-          {viewBlog && (
-            <li>
-              <a href="#blogs">Blogs</a>
-            </li>
-          )}
-          {viewEducation && (
-            <li>
-              <a href="#education">Education</a>
-            </li>
-          )}
-          {viewExperience && (
-            <li>
-              <a href="#experience">Work Experiences</a>
-            </li>
-          )}
-          {viewOpenSource && (
-            <li>
-              <a href="#opensource">Open Source</a>
-            </li>
-          )}
-          {viewAchievement && (
-            <li>
-              <a href="#achievements">Achievements</a>
-            </li>
-          )}
-          {viewTalks && (
-            <li>
-              <a href="#talks">Talks</a>
-            </li>
-          )}
-          {viewResume && (
-            <li>
-              <a href="#resume">Resume</a>
-            </li>
-          )}
-          <li>
-            <a href="#contact">Contact Me</a>
-          </li>
-          <li>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a>
+
+        <nav className="site-header__nav">
+          <ul>
+            {items.map(item => (
+              <li key={item.href}>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+            <li className="site-header__toggle">
               <ToggleSwitch />
-            </a>
-          </li>
-        </ul>
-      </header>
-    </Headroom>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
   );
 }
+
+function getInitials(name) {
+  if (!name) return "";
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .map(part => part[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
+
 export default Header;

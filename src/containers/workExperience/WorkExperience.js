@@ -2,41 +2,29 @@ import React, {useContext} from "react";
 import "./WorkExperience.scss";
 import ExperienceCard from "../../components/experienceCard/ExperienceCard";
 import {workExperiences} from "../../portfolio";
-import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
 
 export default function WorkExperience() {
   const {isDark} = useContext(StyleContext);
-  if (workExperiences.display) {
-    return (
-      <div id="experience">
-        <Fade bottom duration={1000} distance="20px">
-          <div className="experience-container" id="workExperience">
-            <div>
-              <h1 className="experience-heading">Experiences</h1>
-              <div className="experience-cards-div">
-                {workExperiences.experience.map((card, i) => {
-                  return (
-                    <ExperienceCard
-                      key={i}
-                      isDark={isDark}
-                      cardInfo={{
-                        company: card.company,
-                        desc: card.desc,
-                        date: card.date,
-                        companylogo: card.companylogo,
-                        role: card.role,
-                        descBullets: card.descBullets
-                      }}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </Fade>
-      </div>
-    );
-  }
-  return null;
+  if (!workExperiences.display) return null;
+  return (
+    <section
+      id="experience"
+      className={isDark ? "section experience dark-mode" : "section experience"}
+    >
+      <p className="section-label">04 — Experience</p>
+      <h2 className="section-title">Where I've worked</h2>
+      <p className="section-lede">
+        Selected roles in research, infrastructure, and applied AI.
+      </p>
+
+      <ol className="experience__list">
+        {workExperiences.experience.map((card, i) => (
+          <li key={i} className="experience__item">
+            <ExperienceCard isDark={isDark} cardInfo={card} />
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
 }

@@ -1,87 +1,73 @@
-@import "../../_globalColor";
+@import "../../globalColor";
 
-.contact-div-main {
+.contact__lines {
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
-.dark-mode a {
-  color: $textColorDark;
-}
-
-.contact-div-main > * {
-  flex: 1;
-}
-
-.contact-title {
-  font-size: 65px;
-  font-weight: 400;
-}
-
-.contact-detail,
-.contact-detail-email {
-  margin-top: 20px;
-  font-size: 40px;
-  font-weight: 400;
-  color: $subTitle;
+.contact__email,
+.contact__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: $textPrimary;
   text-decoration: none;
+  transition: color 0.15s ease;
+  align-self: flex-start;
 }
 
-.contact-detail:hover,
-.contact-detail-email:hover {
-  color: $textColor;
-  text-shadow: 2px 1px 2px $contactDetailHoverTS;
-  transition: all 0.3s;
+.contact.dark-mode .contact__email,
+.contact.dark-mode .contact__phone {
+  color: $textPrimaryDark;
 }
 
-.contact-subtitle {
-  text-transform: uppercase;
+.contact__email:hover,
+.contact__phone:hover {
+  color: $accent;
 }
 
-.contact-text-div {
-  margin-top: 1.5rem;
+.contact.dark-mode .contact__email:hover,
+.contact.dark-mode .contact__phone:hover {
+  color: $accentDark;
 }
 
-.contact-margin-top {
-  margin-top: 4rem;
+.contact__email > span {
+  font-size: 1rem;
+  color: $textMuted;
+  transition: transform 0.15s ease;
 }
 
-.contact-image-div > img {
-  max-width: 100%;
-  height: auto;
-  margin-left: 1.5rem;
-  margin-top: -4rem;
+.contact__email:hover > span {
+  transform: translate(2px, -2px);
+  color: $accent;
 }
 
-/* Media Query */
-@media (max-width: 1380px), (max-width: 768px) {
-  .contact-title {
-    font-size: 56px;
-    font-weight: 400;
-    text-align: center;
-  }
+.contact.dark-mode .contact__email:hover > span {
+  color: $accentDark;
+}
 
-  .contact-title {
-    font-size: 40px;
-    text-align: center;
-  }
+.contact__phone {
+  font-size: 1.05rem;
+  color: $textSecondary;
+  font-weight: 400;
+}
 
-  .contact-subtitle {
-    font-size: 16px;
-    line-height: normal;
-    text-align: center;
-  }
+.contact.dark-mode .contact__phone {
+  color: $textSecondaryDark;
+}
 
-  .contact-text-div {
-    text-align: center;
-    margin-top: 1.5rem;
-  }
+.contact__social {
+  margin-top: 4px;
+}
 
-  .contact-detail,
-  .contact-detail-email {
-    font-size: 20px;
-  }
-
-  .contact-image-div {
-    display: none;
+@media (max-width: 600px) {
+  .contact__email,
+  .contact__phone {
+    font-size: 1.2rem;
   }
 }

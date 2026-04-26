@@ -1,20 +1,30 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./Education.scss";
 import EducationCard from "../../components/educationCard/EducationCard";
 import {educationInfo} from "../../portfolio";
+import StyleContext from "../../contexts/StyleContext";
 
 export default function Education() {
-  if (educationInfo.display) {
-    return (
-      <div className="education-section" id="education">
-        <h1 className="education-heading">Education</h1>
-        <div className="education-card-container">
-          {educationInfo.schools.map((school, index) => (
-            <EducationCard key={index} school={school} />
-          ))}
-        </div>
-      </div>
-    );
-  }
-  return null;
+  const {isDark} = useContext(StyleContext);
+  if (!educationInfo.display) return null;
+  return (
+    <section
+      id="education"
+      className={isDark ? "section education dark-mode" : "section education"}
+    >
+      <p className="section-label">05 — Education</p>
+      <h2 className="section-title">Education</h2>
+      <p className="section-lede">
+        Where I trained as an engineer and researcher.
+      </p>
+
+      <ol className="education__list">
+        {educationInfo.schools.map((school, i) => (
+          <li key={i} className="education__item">
+            <EducationCard school={school} />
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
 }
